@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Temp Converto</title>
+    <style>
+        body {}
+        
+        h1 {
+            text-align: center;
+        }
+        
+        #container {
+            color: white;
+            text-align: center;
+            background-color: purple;
+            padding: 10%;
+            display: flex;
+            justify-content: center;
+            margin: auto;
+        }
+        
+        .input-div {
+            /* display: inline-block;   OR use FlexBox*/
+            padding: 15px 20px;
+            margin: 10px;
+        }
+        
+        label {
+            padding: 15px 20px;
+        }
+        
+        .inp {
+            font-size: 16px;
+            /* font-weight: bold; */
+            font-style: normal;
+            text-align: center;
+            /* width: 250px; */
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Temperature Converter</h1>
+    <div id="container">
+        <div class="input-div">
+            <label>Celsius</label> <br>
+            <input placeholder="celsius" type="number" value="0" id="cel" class="inp">
+        </div>
+        <div class="input-div">
+            <label>Fahrenheit</label> <br>
+            <input placeholder="Fahrenheit" type="number" value="32" id="fah" class="inp">
+        </div>
+    </div>
+    <script>
+        var cel = document.getElementById("cel");
+        var fah = document.getElementById("fah");
+        cel.addEventListener('input', function() {
+            // console.log("cel changed");
+            let c = this.value;
+            let f = (c * 9 / 5) + 32;
+            if (!Number.isInteger(f)) {
+                f = f.toFixed(4);
+            }
+            fah.value = f;
+
+        });
+        fah.addEventListener('input', function() {
+            let f = this.value;
+            let c = (f - 32) * 5 / 9;
+            if (!Number.isInteger(c)) {
+                c = c.toFixed(4);
+            }
+            cel.value = c;
+        });
+    </script>
+</body>
+
+</html>
